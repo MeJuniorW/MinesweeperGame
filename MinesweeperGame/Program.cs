@@ -4,7 +4,7 @@ namespace Minesweeper
 {
     class Program
     {
-        static readonly int sizeOfBoard = GetSizeOfBoards();
+        static readonly int sizeOfBoard = ChooseLevel();
         static string[,] initialBoard = UnrevealedBoard();
         static int[] firstCellPosition = GetCell();
         static int[,] realBoard = SetMines(firstCellPosition);
@@ -30,7 +30,7 @@ namespace Minesweeper
                 IsGameOver(out gameOver, cellPosition, playingBoard, option);
             }
         }
-        static int GetSizeOfBoards()
+        static int ChooseLevel()
         {
             int sizeOfBoard = 0;
             Console.WriteLine($"Choose the level of difficulty: ");
@@ -40,7 +40,7 @@ namespace Minesweeper
             if ((!parseBoardSize) || (level < -1) || (level > 4))
             {
                 Console.WriteLine("Not a level. Try again");
-                level = GetSizeOfBoards();
+                level = ChooseLevel();
             }
             if (level == 1)
             {
