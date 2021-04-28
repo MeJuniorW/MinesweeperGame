@@ -37,7 +37,7 @@ namespace Minesweeper
             Console.WriteLine("Level One: ");
             Console.WriteLine("Level Two: ");
             bool parseBoardSize = Int32.TryParse(Console.ReadLine(), out int level);
-            if ((!parseBoardSize) || (level < -1) || (level > 4))
+            if ((!parseBoardSize) || (level < -1) || (level > 3))
             {
                 Console.WriteLine("Not a level. Try again");
                 level = ChooseLevel();
