@@ -32,12 +32,23 @@ namespace Minesweeper
         }
         static int GetSizeOfBoards()
         {
-            int sizeOfBoard;
-            Console.WriteLine($"What size do you want the board to be: ");
-            bool parseBoardSize = Int32.TryParse(Console.ReadLine(), out sizeOfBoard);
-            if (!parseBoardSize)
+            int sizeOfBoard = 0;
+            Console.WriteLine($"Choose the level of difficulty: ");
+            Console.WriteLine("Level One: ");
+            Console.WriteLine("Level Two: ");
+            bool parseBoardSize = Int32.TryParse(Console.ReadLine(), out int level);
+            if ((!parseBoardSize) || (level < -1) || (level > 4))
             {
-                sizeOfBoard = GetSizeOfBoards();
+                Console.WriteLine("Not a level. Try again");
+                level = GetSizeOfBoards();
+            }
+            if (level == 1)
+            {
+                sizeOfBoard = 5;
+            }
+            if (level == 2)
+            {
+                sizeOfBoard = 10;
             }
             return sizeOfBoard;
         }
