@@ -4,7 +4,7 @@ namespace Minesweeper
 {
     class Program
     {
-        static int sizeOfBoard = GetSizeOfBoards();
+        static readonly int sizeOfBoard = GetSizeOfBoards();
         static string[,] initialBoard = UnrevealedBoard();
         static int[] firstCellPosition = GetCell();
         static int[,] realBoard = SetMines(firstCellPosition);
@@ -16,6 +16,7 @@ namespace Minesweeper
             Console.Clear();
             string[,] playingBoard = ChangeDisplayBoard(firstCellPosition, initialBoard);
             Console.Clear();
+            PrintNumberOfMines();
             PrintBoard(playingBoard);
 
             while (!gameOver)
@@ -24,6 +25,7 @@ namespace Minesweeper
                 option = RevealOrFlag();
                 playingBoard = ChangeDisplayBoard(cellPosition, playingBoard, option);
                 Console.Clear();
+                PrintNumberOfMines();
                 PrintBoard(playingBoard);
                 IsGameOver(out gameOver, cellPosition, playingBoard, option);
             }
@@ -278,7 +280,7 @@ namespace Minesweeper
                     }
                 }
             }
-            Console.WriteLine($"Number of mines are {numberOfMines}");
+            Console.WriteLine($"There are {numberOfMines} mines.");
         }
 
         static void RevealMinePosition(string[,] board)
